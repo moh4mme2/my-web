@@ -7,16 +7,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# Sidebar navigation
-st.sidebar.title("Navigation")
-page = st.sidebar.radio(
-    "Go to",
-    ["Home", "About Me", "Video Links", "Documents", "Contact Me"]
-)
+# Horizontal navigation bar
+st.title("Physics Teacher's Web App 🧑‍🏫")
+menu = ["Home", "About Me", "Video Links", "Documents", "Contact Me"]
+page = st.radio("Navigation", menu, horizontal=True)
 
 # Define each page
 def home_page():
-    st.title("Welcome to Mr.Mohammed Page")
+    st.title("Welcome to Mr. Mohammed's Page")
     st.markdown(
         """
         Hi, I'm a physics teacher passionate about education and technology. 
