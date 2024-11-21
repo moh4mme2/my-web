@@ -7,10 +7,15 @@ st.set_page_config(
     layout="wide"
 )
 
-# Horizontal navigation bar
-st.title("Physics Teacher's Web App 🧑‍🏫")
-menu = ["Home", "About Me", "Video Links", "Documents", "Contact Me"]
-page = st.radio("Navigation", menu, horizontal=True)
+# Create a layout with the navigation on the right
+col1, col2 = st.columns([4, 1])  # Adjust the ratio for content and sidebar space
+
+with col2:  # Right-side navigation
+    st.markdown("## Navigation")
+    page = st.radio(
+        "Go to",
+        ["Home", "About Me", "Video Links", "Documents", "Contact Me"]
+    )
 
 # Define each page
 def home_page():
@@ -72,14 +77,15 @@ def contact_me_page():
         if submitted:
             st.success("Your message has been sent!")
 
-# Call the appropriate page function
-if page == "Home":
-    home_page()
-elif page == "About Me":
-    about_me_page()
-elif page == "Video Links":
-    video_links_page()
-elif page == "Documents":
-    documents_page()
-elif page == "Contact Me":
-    contact_me_page()
+# Render the selected page
+with col1:  # Main content area
+    if page == "Home":
+        home_page()
+    elif page == "About Me":
+        about_me_page()
+    elif page == "Video Links":
+        video_links_page()
+    elif page == "Documents":
+        documents_page()
+    elif page == "Contact Me":
+        contact_me_page()
